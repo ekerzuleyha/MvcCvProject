@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using MvcCv.Models.Entity;
 
@@ -40,5 +41,12 @@ namespace MvcCv.Repositories
         {
             db.SaveChanges();
         }
+        //t türünde find isminde bir metot oluşturduk id yi bulcaz.bu metot ile silinecek veriyi bulacağız.
+        //whereden gelecek şarta göre bana ilk değeri döndür.
+        public T Find (Expression<Func<T,bool>> where)
+        {
+            return db.Set<T>().FirstOrDefault(where);
+        }
+
     }
 }

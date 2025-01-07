@@ -1,0 +1,37 @@
+﻿@using MvcCv.Models.Entity
+@* deneyimlerimden gelen değeri listeleyecek *@
+@model List<TblDeneyimlerim>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h2>Deneyim Listesi</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Başlık</th>
+        <th>Alt Başlık</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+       
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Baslik</td>
+            <td>@item.Altbaslik</td>
+            <td>@item.Tarih</td>
+            <td><a href="/Deneyim/DeneyimSil/@item.ID/" class="btn btn-outline-danger" >Sil</a></td>
+            <td><a href="#" class="btn btn-outline-success" >Güncelle</a></td>
+        </tr>
+    }
+</table>
+
+<a href="/Deneyim/DeneyimEkle/" class="btn btn-outline-primary">Yeni Deneyim Ekle</a>
+
